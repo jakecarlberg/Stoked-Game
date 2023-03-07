@@ -285,7 +285,7 @@ public class PlayState extends GameState {
 
 	
 	public void switchState() {
-		model.switchState(new GameOverState(model));
+		model.switchState(new GameOverState(model, score));
 	}
 	
 	public void bombMode() {

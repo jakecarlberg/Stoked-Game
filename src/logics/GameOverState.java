@@ -15,14 +15,17 @@ public class GameOverState extends GameState {
 	private String informationText;
 	private Color bgColor;
 	private Color fontColor;
+	private double score;
 	
 	
-	public GameOverState(GameModel model) {
+	public GameOverState(GameModel model, double score) {
 		super(model);
 		
+		this.score = score;
+		
 		informationText = "GAME OVER!\nPress Enter To Continue\nEscape to exit";
-		bgColor = Color.BLUE;
-		fontColor = Color.RED;
+		bgColor = Color.BLACK;
+		fontColor = Color.WHITE;
 	}
 
 	@Override
@@ -37,6 +40,7 @@ public class GameOverState extends GameState {
 		g.setFill(fontColor);
 		g.setFont(new Font(30));
 		g.fillText(informationText, SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3);
+		g.fillText("YOUR SCORE: \n" + String.valueOf(score), SCREEN_WIDTH/3, SCREEN_HEIGHT/5);
 
 	}
 
