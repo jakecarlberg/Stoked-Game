@@ -3,44 +3,52 @@ package logics;
 import static constants.Constants.SCREEN_HEIGHT;
 import static constants.Constants.SCREEN_WIDTH;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 public class GameOverState extends GameState {
 
-	
-	private String informationText;
-	private Color bgColor;
 	private Color fontColor;
 	private double score;
+	private String playerName = "";
+	private Score newScore;
+	private HighscoreState highscoreState;
+	private Image gameOver;
 	
 	
 	public GameOverState(GameModel model, double score) {
 		super(model);
 		
 		this.score = score;
-		
-		informationText = "GAME OVER!\nPress Enter To Continue\nEscape to exit";
-		bgColor = Color.BLACK;
+		highscoreState = new HighscoreState(model);
 		fontColor = Color.WHITE;
+		
+		try {
+			gameOver = new Image(new FileInputStream("game-over.png"));
+		} catch (FileNotFoundException e) {
+			System.out.println("Unable to find image-files!");
+		}
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void draw(GraphicsContext g) {
-		drawBg(g, bgColor);
+		g.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		g.setFill(fontColor);
-		g.setFont(new Font(30));
-		g.fillText(informationText, SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3);
-		g.fillText("YOUR SCORE: \n" + String.valueOf(score), SCREEN_WIDTH/3, SCREEN_HEIGHT/5);
+		g.drawImage(gameOver, -251, -5, SCREEN_WIDTH*1.85, SCREEN_HEIGHT);
+		g.fillText(String.valueOf(score), SCREEN_WIDTH/2-50, SCREEN_HEIGHT/3);
+		g.fillText("NAME: " + playerName, SCREEN_WIDTH / 4, SCREEN_HEIGHT * 0.72);
+		
 
 	}
 
@@ -50,9 +58,17 @@ public class GameOverState extends GameState {
 		System.out.println("Trycker på " + key.getText() + " i MenuState");
 
 		if (key.getCode() == KeyCode.ENTER) {
-			model.switchState(new MenuState(model));
+			newScore = new Score(playerName, score);
+			highscoreState.topTen(newScore);
+			model.switchState(highscoreState);
 		} else if (key.getCode() == KeyCode.ESCAPE) {
-			System.exit(0);
+			model.switchState(new MenuState(model));
+		} else if (key.getCode().isLetterKey()) {
+			playerName += key.getCode();
+		} else if (key.getCode() == KeyCode.BACK_SPACE) {
+			if (playerName.length() != 0) {
+				playerName = playerName.substring(0, playerName.length() - 1);
+			}
 		}
 
 	}

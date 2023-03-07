@@ -82,6 +82,8 @@ public class MenuState extends GameState {
 			System.exit(0);
 		} else if (key.getCode() == KeyCode.I) {
 			model.switchState(new InstructionState(model));
+		} else if (key.getCode() == KeyCode.H) {
+			model.switchState(new HighscoreState(model));
 		}
 	}
 	
