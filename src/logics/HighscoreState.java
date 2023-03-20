@@ -19,6 +19,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
+/**
+ * This state represents the Highscore of the Game. The main responsibility of this
+ * class is to allow the user to see the high score list.
+ * After this state you can go back to menu.
+ */
+
+
 public class HighscoreState extends GameState {
 	
 	private Color fontColor;

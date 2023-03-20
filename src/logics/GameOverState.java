@@ -12,6 +12,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
+/**
+ * This state represents the Game Over of the Game. The main responsibility of this
+ * class is to allow the user to see the score and type in a name to enter in to 
+ * highscore. After this state you can either see highscore or go back to menu.
+ */
+
+
 public class GameOverState extends GameState {
 
 	private Color fontColor;

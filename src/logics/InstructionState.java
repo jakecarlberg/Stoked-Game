@@ -11,6 +11,12 @@ import javafx.scene.input.KeyEvent;
 import static constants.Constants.SCREEN_HEIGHT;
 import static constants.Constants.SCREEN_WIDTH;
 
+/**
+ * This state represents the Instructions of the Game. The main responsibility of this
+ * class is to allow the user to be able to see how to play the game.
+ * After this state you can go back to menu.
+ */
+
 public class InstructionState extends GameState {
 
 	private Image instructions;

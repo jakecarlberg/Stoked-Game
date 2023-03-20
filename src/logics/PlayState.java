@@ -39,11 +39,7 @@ public class PlayState extends GameState {
 	 * a way to make this more general and not duplicate variables?
 	 */
 	private String informationText;
-//	private Color bgColor;
 	private Color fontColor;
-
-	/* Class only used for testing */
-//	private Tester tester;
 	
 	private ArrayList<GameObjects> enemies;
 	private ArrayList<GameObjects> weapons;
@@ -68,16 +64,11 @@ public class PlayState extends GameState {
 	
 	private boolean left;
 	private boolean right;
-	
-	
-
-	
 
 
 	public PlayState(GameModel model) {
 		super(model);
 		informationText = "Press Escape To Return To The Menu";
-//		bgColor = Color.BLACK;
 		fontColor = Color.BLUE;
 
 		try {
@@ -105,9 +96,6 @@ public class PlayState extends GameState {
 		beerHandler = new BeerHandler(this);
 		
 		score = 0;
-		
-		
-		
 	}
 
 	/**
@@ -115,10 +103,22 @@ public class PlayState extends GameState {
 	 */
 	@Override
 	public void draw(GraphicsContext g) {
-		//drawBg(g, bgColor);
+
 		g.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		g.setFill(Color.RED);
 		g.setFont(new Font(30)); // Big letters
+		
+		
+		/**
+		 * IMPERATIV KOD ENBART FÖR ATT ÄNDRA BAKGRUNDSBILD PÅ LEVLARNA
+		 * Anledningen till detta är för att spelets funktionalitet på de olika
+		 * levlarna är samma. Det som skiljer sig är objekten och bakgrundsbilernas
+		 * images (ty vi har olika teman på olika levlar: Ski(1), Surf(2) & SkyDive(3)),
+		 * samt antal fiender skiljer sig. Ju svårare level, desto fler fiender. I övrigt
+		 * är funktionaliteten samma, varpå vi därför inte har olika states för olika
+		 * levlar, utan enbart byter bakgrundsbild nedan med imperativ kod. Men för 
+		 * alla olika spelobjekt på levlarna har vi olika klasser.
+		 */
 		if (levelUp1 == true) {
 			g.drawImage(wave, -250, -250, SCREEN_WIDTH+250, SCREEN_HEIGHT+250);
 			g.fillText("LEVEL 2", SCREEN_WIDTH - 550, 120);
@@ -129,27 +129,15 @@ public class PlayState extends GameState {
 			g.drawImage(slope, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			g.fillText("LEVEL 1", SCREEN_WIDTH - 550, 120);
 		}
+		/**
+		 * SLUT PÅ IMPERATIV KOD
+		 */
+		
 		g.fillText("Score: " + String.valueOf(score), SCREEN_WIDTH-200, 120);
 
 		g.setFill(fontColor);
 		g.fillText(informationText, 40, SCREEN_HEIGHT - 110);
 		
-		
-		
-		
-//		g.drawImage(beer1BnW, 850, 650, 50, 50);
-//		g.drawImage(beer1BnW, 900, 650, 50, 50);
-//		g.drawImage(beer1BnW, 950, 650, 50, 50);
-		
-		
-		// Can also use:
-		// g.setStroke(fontColor);
-		// g.strokeText(informationText, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-
-		// This could be a call to all our objects that we want to draw.
-		// Using the tester simply to illustrate how it could work.
-		
-//		tester.delegate(g);
 		
 		
 		player.draw(g);
@@ -183,12 +171,14 @@ public class PlayState extends GameState {
 		
 		
 		if (key.getCode() == KeyCode.LEFT) {
-//			player.moveLeft();
 			left = true;
 		} else if (key.getCode() == KeyCode.RIGHT) {
-//			player.moveRight();
 			right = true;
 		} else if (key.getCode() == KeyCode.SPACE) {
+			
+			/**
+			 * IMPERATIV KOD ENBART FÖR ATT SKJUTA OLIKA VAPEN PGA OLIKA TEMAN
+			 */
 			if (levelUp1 == true) {
 				weapons.add(new Spear(player.getX(), player.getY(), 40));
 			} else if (levelUp2 == true) {
@@ -196,6 +186,9 @@ public class PlayState extends GameState {
 			} else {
 				weapons.add(new Snowball(player.getX(), player.getY(), 20));
 			}
+			/**
+			 * SLUT PÅ IMPERATIV KOD
+			 */
 		}
 	}
 	
@@ -212,10 +205,6 @@ public class PlayState extends GameState {
 
 	@Override
 	public void update() {
-		// Here one would probably instead move the player and any
-		// enemies / moving obstacles currently active.
-		
-//		tester.update();
 		
 		if (goSlow == false) {
 			player.update();
@@ -288,6 +277,11 @@ public class PlayState extends GameState {
 		model.switchState(new GameOverState(model, score));
 	}
 	
+	/** 
+	 * Visserligen är denna metod något som klassen bomb ansvarar för, men
+	 * då funktionen av bomb går ut på att ändra alla andra objekts positioner
+	 * har vi valt att i bomb kalla på denna metod för att enklare lösa det här.
+	 */
 	public void bombMode() {
 		for (GameObjects e : enemies) {
 			e.setY(e.getY()+SCREEN_HEIGHT*2);
@@ -303,13 +297,21 @@ public class PlayState extends GameState {
 		}
 	}
 	
+	
+	/**
+	 * LEVLAR UP!
+	 * Välkommen till level 2. Anledningen till denna metod är att byta ut alla
+	 * objekt i objekt-listorna till de nya sub-klasserna av "mellan-klasserna",
+	 * alltså alla objekt som först instansieras i level 1 på skid-temat (dessa 
+	 * vi kallar för mellan-klasser då de är subklasser av GameObject, men samtidigt
+	 * agerar som super-klass för objekten i level 2 och level 3.
+	 */
 	public void levelUp1() {
 		System.out.println("LEVEL UP TO LEVEL 2");
 		levelUp1 = true;
 		enemies.removeAll(enemies);
 		weapons.removeAll(weapons);
 		powerUps.removeAll(powerUps);
-//		bombs.removeAll(bombs);
 		beersAdded.removeAll(beersAdded);
 		
 		player = new Player2(player.getX(), player.getY(), player.getSize(), this);
@@ -320,6 +322,10 @@ public class PlayState extends GameState {
 		powerUps.add(new Coconut(500, SCREEN_HEIGHT, 50));	
 	}
 	
+	/**
+	 * LEVLAR UP IGEN!
+	 * Välkommen till level 3. Samma sak här som ovan gälller.
+	 */
 	public void levelUp2() {
 		System.out.println("LEVEL UP TO LEVEL 3");
 		levelUp1 = false;
@@ -327,14 +333,12 @@ public class PlayState extends GameState {
 		enemies.removeAll(enemies);
 		weapons.removeAll(weapons);
 		powerUps.removeAll(powerUps);
-//		bombs.removeAll(bombs);
 		beersAdded.removeAll(beersAdded);
 		
 		player = new Player3(player.getX(), player.getY(), player.getSize(), this);
 		enemies.add(new Bird(50, SCREEN_HEIGHT, 100, this));
 		enemies.add(new Airbaloon(450, SCREEN_HEIGHT*1.5, 100, this));
 		enemies.add(new Airplane(SCREEN_WIDTH/4, SCREEN_HEIGHT, 200));
-//		enemies.add(new Airplane(SCREEN_WIDTH/2, SCREEN_HEIGHT*1.3, 200));
 		enemies.add(new Airplane(SCREEN_WIDTH/2+150, SCREEN_HEIGHT*1.6, 200));
 		powerUps.add(new Redbull(500, SCREEN_HEIGHT, 50));	
 	}
