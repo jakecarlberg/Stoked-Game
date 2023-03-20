@@ -3,12 +3,17 @@ package graphics;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Coconut extends Beer {
 
+//This class handles the outprint of the new powerup Coconut which enter the game in level 2. 
+//
+//It extends Beer since it shares the same functions in the game. 
+//
+//Hence it makes sense to override methods from it's superclass Beer.	
+	
 	private Image spear;
 	
 	public Coconut(double x, double y, double size) {
@@ -26,20 +31,4 @@ public class Coconut extends Beer {
 		g.drawImage(spear, getX(), getY(), getSize(), getSize());
 	}
 
-	@Override
-	public void update() {
-		super.update();
-	}
-
-	@Override
-	public void updateSlow() {
-		super.updateSlow();
-	}
-
-	@Override
-	public Rectangle2D getRect() {
-		return super.getRect();
-	}
-
-	
 }

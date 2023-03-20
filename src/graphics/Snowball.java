@@ -1,5 +1,7 @@
 package graphics;
 
+//This class handles the weapon Snowball which is responsible of updating the position.
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -32,7 +34,7 @@ public class Snowball extends GameObjects {
 	@Override
 	public void update() {
 		if (getY() > SCREEN_HEIGHT) {
-			// The position is exiting the screen, so we reset it
+//          The position is exiting the screen, so we reset it
 //			playstate.getWeapons.remove(this);
 		} else {
 			this.setY(getY() + 50);

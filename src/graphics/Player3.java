@@ -3,10 +3,15 @@ package graphics;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logics.PlayState;
+
+//This class handles the outprint of the new player Player3 which enter the game in level 3. 
+//
+//It extends Player since it shares the same functions in the game. 
+//
+//Hence it makes sense to override methods from the superclass Player.
 
 public class Player3 extends Player {
 
@@ -25,31 +30,6 @@ public class Player3 extends Player {
 	@Override
 	public void draw(GraphicsContext g) {
 		g.drawImage(flyer, getX(), getY(), getSize(), getSize());
-	}
-
-//	@Override
-//	public void moveLeft() {
-//		super.moveLeft();
-//	}
-//
-//	@Override
-//	public void moveRight() {
-//		super.moveRight();
-//	}
-
-	@Override
-	public void update() {
-		super.update();
-	}
-
-	@Override
-	public void updateSlow() {
-		super.updateSlow();
-	}
-
-	@Override
-	public Rectangle2D getRect() {
-		return super.getRect();
 	}
 
 }

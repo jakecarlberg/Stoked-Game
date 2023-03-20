@@ -1,9 +1,14 @@
 package graphics;
 
+//This class handles the outprint of the new enemy Shark which enter the game in level 2. 
+//
+//It extends Snowboard since it shares the same functions in the game. 
+//
+//Hence it makes sense to override methods from the superclass Snowboard.
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logics.PlayState;
@@ -27,20 +32,4 @@ public class Shark extends Snowboard {
 		g.drawImage(shark, getX(), getY(), getSize(), getSize());
 	}
 
-	@Override
-	public void update() {
-		super.update();
-	}
-
-	@Override
-	public void updateSlow() {
-		super.updateSlow();
-	}
-
-	@Override
-	public Rectangle2D getRect() {
-		return super.getRect();
-	}
-
-	
 }

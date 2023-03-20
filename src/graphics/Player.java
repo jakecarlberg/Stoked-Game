@@ -11,6 +11,10 @@ import logics.PlayState;
 import static constants.Constants.SCREEN_HEIGHT;
 import static constants.Constants.SCREEN_WIDTH;
 
+//Player is the class responsible for positioning and printing the character of the game. 
+
+//Also it checks which items the player is colliding with and calling on appropriate functions in playState.
+
 public class Player extends GameObjects {
 
 	private static Image player;
@@ -37,21 +41,7 @@ public class Player extends GameObjects {
 		g.restore();
 	}
 	
-//	public void moveLeft() {
-//		if (this.getX() < 0) {		
-//			this.setX(SCREEN_WIDTH - 100);
-//		} else {
-//			this.setX(this.getX() - 30);
-//		}
-//	}
-//	
-//	public void moveRight() {
-//		if (this.getX() > SCREEN_WIDTH - 100) {
-//			this.setX(0);
-//		} else {
-//			this.setX(this.getX() + 30);;
-//		}	
-//	}
+
 
 	@Override
 	public void update() {

@@ -3,9 +3,14 @@ package graphics;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
+//This class handles the outprint of the new static enemie Airplane which enter the game in level 3. 
+//
+//It extends Tree since it shares the same functions in the game. 
+//
+//Hence it makes sence to override methods from the superclass Tree.
 
 public class Airplane extends Tree {
 
@@ -26,21 +31,5 @@ public class Airplane extends Tree {
 		g.drawImage(airplane, getX(), getY(), getSize(), getSize());
 	}
 
-	@Override
-	public void update() {
-		super.update();
-	}
-
-	@Override
-	public void updateSlow() {
-		super.updateSlow();
-	}
-
-	@Override
-	public Rectangle2D getRect() {
-		return super.getRect();
-	}
-	
-	
 
 }

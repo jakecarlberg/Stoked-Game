@@ -8,6 +8,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import static constants.Constants.SCREEN_HEIGHT;
 
+//This class has is managing the outprint and updating of powerup Bomb's position. 
+
+//It calls on the class RandomX to update its "spawn"-position.
+
 public class Bomb extends GameObjects {
 
 	private Image bomb;

@@ -1,5 +1,7 @@
 package graphics;
 
+//This class handled the enemy Snowboard. Main responsibilities are updating position and seeing if it collides with a weapon.
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 

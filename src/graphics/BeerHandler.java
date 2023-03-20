@@ -10,6 +10,8 @@ import logics.PlayState;
 import static constants.Constants.SCREEN_HEIGHT;
 import static constants.Constants.SCREEN_WIDTH;
 
+//Beerhandlder is a separate class that is managing the powerup-bar in the bottom of the screen. 
+
 public class BeerHandler {
 
 	private PlayState playState;
@@ -73,7 +75,6 @@ public class BeerHandler {
 				g.drawImage(redbull, SCREEN_WIDTH-150, SCREEN_HEIGHT-200, 50, 50);
 				g.drawImage(redbull, SCREEN_WIDTH-100, SCREEN_HEIGHT-200, 50, 50);
 				g.drawImage(redbull, SCREEN_WIDTH-50, SCREEN_HEIGHT-200, 50, 50);
-//				playState.getBeersAdded().removeAll(playState.getBeersAdded());
 				playState.setGoSlow(true);
 			}
 		} else {
@@ -93,7 +94,6 @@ public class BeerHandler {
 				g.drawImage(beer, SCREEN_WIDTH-150, SCREEN_HEIGHT-200, 50, 50);
 				g.drawImage(beer, SCREEN_WIDTH-100, SCREEN_HEIGHT-200, 50, 50);
 				g.drawImage(beer, SCREEN_WIDTH-50, SCREEN_HEIGHT-200, 50, 50);
-//				playState.getBeersAdded().removeAll(playState.getBeersAdded());
 				playState.setGoSlow(true);
 			} 
 		}

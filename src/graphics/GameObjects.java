@@ -3,6 +3,10 @@ package graphics;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 
+//This class i Abstract and has it's main responsibility is to store the position of different objects.
+
+//It gives every subclass the responsibility to update positions etc.
+
 public abstract class GameObjects {
 
 	private double x, y, size;

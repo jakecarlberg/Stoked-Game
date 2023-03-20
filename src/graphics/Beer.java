@@ -8,6 +8,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import static constants.Constants.SCREEN_HEIGHT;
 
+//This class is one of the powerups in level 1. Main responsibilities is to update it's position and image in the game.
+
 public class Beer extends GameObjects {
 
 	private Image beer;
@@ -31,7 +33,6 @@ public class Beer extends GameObjects {
 	@Override
 	public void update() {
 		if (getY() < -100) {
-			// The position is exiting the screen, so we reset it
 			this.setX(new RandomX().makeRandomPersons());
 			this.setY(SCREEN_HEIGHT);
 		} else {
@@ -42,7 +43,7 @@ public class Beer extends GameObjects {
 
 
 	@Override
-	public void updateSlow() {} //Empty so you cannot collect more beers while in slow-mode.
+	public void updateSlow() {} 
 
 	@Override
 	public Rectangle2D getRect() {

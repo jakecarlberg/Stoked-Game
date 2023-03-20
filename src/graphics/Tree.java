@@ -1,5 +1,7 @@
 package graphics;
 
+//This class handles the enemy Tree. Main responsibilities are updating positions, via randomX.
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
