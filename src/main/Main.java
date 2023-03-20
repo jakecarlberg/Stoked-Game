@@ -26,9 +26,6 @@ import javafx.stage.Stage;
  * <p>
  * 5. Run the main loop of the game.
  * <p>
- * https://gitlab.liu.se/magni54/ExempelProjekt-TDDE10_725G90
- * 
- * @author magni54, alomi60
  */
 public class Main extends Application {
 	

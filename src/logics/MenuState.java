@@ -14,15 +14,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 /**
- * This state represents the menu of the Game The main responsibility of this
- * class is to allow the user to swap state to the PlayState
+ * This state represents the menu of the Game. The main responsibility of this
+ * class is to allow the user to swap state to the PlayState and start to play, while 
+ * also be able to look at instructions in instruction state, or watch the highscore in
+ * highscore state. You can also exit the program from here.
  */
 public class MenuState extends GameState {
-	/*
-	 * The following three variables are just used to show that a change of state
-	 * can be made. The same variables also exist in the PlayState, can you think of
-	 * a way to make this more general and not duplicate variables?
-	 */
+
 	private String informationText;
 	private Color fontColor;
 	// A PlayState, so we can change to the PlayState from the menu.
@@ -58,9 +56,6 @@ public class MenuState extends GameState {
 		g.setFont(new Font(30)); // Big letters
 		// Print the information text, centered on the canvas
 		g.fillText(informationText, SCREEN_WIDTH / 3 - 70, SCREEN_HEIGHT - 350);
-		// Can also use:
-		// g.setStroke(fontColor);
-		// g.strokeText(informationText, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	}
 
 	/**
