@@ -44,6 +44,8 @@ public class Snowboard extends GameObjects {
 			rect = new Rectangle2D(getX(), getY(), getSize()-20, getSize()-20);
 		}
 		
+		
+		//SNOWBOARD DÖR NÄR DEN INTERSECTAR MED SNÖBOLLAR, SAMT SCORE ÖKAS MED +100.
 		for (GameObjects w : playState.getWeapons()) {
 			if (rect.intersects(w.getRect())) {
 				this.setX(new RandomX().makeRandomPersons());
@@ -85,8 +87,6 @@ public class Snowboard extends GameObjects {
 			}
 		}
 	}
-	
-	
 
 	@Override
 	public Rectangle2D getRect() {

@@ -11,13 +11,14 @@ import java.io.FileNotFoundException;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import logics.PlayState;
 
 public class Redbull extends Beer {
 
 	private Image redbull;
 	
-	public Redbull(double x, double y, double size) {
-		super(x, y, size);
+	public Redbull(double x, double y, double size, PlayState playState) {
+		super(x, y, size, playState);
 		
 		try {
 			redbull = new Image(new FileInputStream("redbull.png"));

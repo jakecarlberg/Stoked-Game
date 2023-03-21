@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
 import static constants.Constants.SCREEN_HEIGHT;
 
 public class Snowball extends GameObjects {
@@ -34,15 +35,13 @@ public class Snowball extends GameObjects {
 	@Override
 	public void update() {
 		if (getY() > SCREEN_HEIGHT) {
-//          The position is exiting the screen, so we reset it
 //			playstate.getWeapons.remove(this);
 		} else {
 			this.setY(getY() + 50);
 			rect = new Rectangle2D(getX(), getY(), getSize(), getSize());
 		}
 	}
-		
-
+	
 	@Override
 	public void updateSlow() {
 		this.update();

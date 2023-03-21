@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import logics.PlayState;
 
 public class Coconut extends Beer {
 
@@ -16,8 +17,8 @@ public class Coconut extends Beer {
 	
 	private Image spear;
 	
-	public Coconut(double x, double y, double size) {
-		super(x, y, size);
+	public Coconut(double x, double y, double size, PlayState playState) {
+		super(x, y, size, playState);
 		
 		try {
 			spear = new Image(new FileInputStream("coconut.png"));

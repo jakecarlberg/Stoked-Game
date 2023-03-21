@@ -38,6 +38,12 @@ public class BeerHandler {
 	}
 
 	public void draw(GraphicsContext g) {
+		
+		
+		/**
+		 * IMPERATIV KOD ENBART PGA OLIKA TEMAN PÅ OLIKA DRYCK!
+		 */
+		
 		if (playState.isLevelUp1()) {
 			if (playState.getBeersAdded().size() == 0) {
 				g.drawImage(coconutBnW, SCREEN_WIDTH-150, SCREEN_HEIGHT-200, 50, 50);

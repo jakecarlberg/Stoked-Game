@@ -8,7 +8,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logics.PlayState;
 
-import static constants.Constants.SCREEN_HEIGHT;
 import static constants.Constants.SCREEN_WIDTH;
 
 //Player is the class responsible for positioning and printing the character of the game. 
@@ -47,6 +46,8 @@ public class Player extends GameObjects {
 	public void update() {
 		rect = new Rectangle2D(getX(), getY(), getSize()-20, getSize()-20);
 		
+		
+		//HUR PLAYER RÖR PÅ SIG
 		if (playState.isLeft()) {
 			if (this.getX() < 0) {		
 				this.setX(SCREEN_WIDTH - 100);
@@ -62,32 +63,15 @@ public class Player extends GameObjects {
 		}
 
 		
+		//PLAYER DÖR NÄR DEN INTERSECTAR MED FIENDER - BÅDE STATISKA (tree) OCH RÖRLIGA (snowboard)
 		for (GameObjects e : playState.getEnemies()) {
 			if (rect.intersects(e.getRect())) {
 				playState.switchState();
 			}
 		}
-		
-		for (GameObjects p : playState.getPowerUps()) {
-			if (rect.intersects(p.getRect())) {
-//				playState.getPowerUps().remove(p); //Skapar Error!!!
-				p.setX(new RandomX().makeRandomPersons());
-				p.setY(SCREEN_HEIGHT);
-				playState.getBeersAdded().add(p);
-//				playState.getPowerUps().remove(p);
-			}
-		}
-		
-		for (GameObjects b : playState.getBombs()) {
-			if (rect.intersects(b.getRect())) {
-				playState.bombMode();
-			}
-		}
-		
-		// Player Intersectar med bomb
-	}
 
-	@Override
+	}
+	
 	public void updateSlow() {}
 
 	@Override

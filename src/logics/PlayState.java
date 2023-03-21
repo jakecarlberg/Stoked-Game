@@ -90,8 +90,8 @@ public class PlayState extends GameState {
 		enemies.add(new Tree(50, SCREEN_HEIGHT, 100));
 		enemies.add(new Tree(450, SCREEN_HEIGHT*1.5, 100));
 		enemies.add(new Snowboard(SCREEN_WIDTH/2, SCREEN_HEIGHT, 100, this));
-		powerUps.add(new Beer(500, SCREEN_HEIGHT, 50));
-		bombs.add(new Bomb(SCREEN_WIDTH-200, SCREEN_HEIGHT+500, 50));
+		powerUps.add(new Beer(500, SCREEN_HEIGHT, 50, this));
+		bombs.add(new Bomb(SCREEN_WIDTH-200, SCREEN_HEIGHT+500, 50, this));
 		
 		beerHandler = new BeerHandler(this);
 		
@@ -277,26 +277,6 @@ public class PlayState extends GameState {
 		model.switchState(new GameOverState(model, score));
 	}
 	
-	/** 
-	 * Visserligen är denna metod något som klassen bomb ansvarar för, men
-	 * då funktionen av bomb går ut på att ändra alla andra objekts positioner
-	 * har vi valt att i bomb kalla på denna metod för att enklare lösa det här.
-	 */
-	public void bombMode() {
-		for (GameObjects e : enemies) {
-			e.setY(e.getY()+SCREEN_HEIGHT*2);
-			e.setX(new RandomX().makeRandomPersons());
-		}
-		for (GameObjects p : powerUps) {
-			p.setY(SCREEN_HEIGHT*3);
-			p.setX(new RandomX().makeRandomPersons());
-		}
-		for (GameObjects b : bombs) {
-			b.setY(SCREEN_HEIGHT*4);
-			b.setX(new RandomX().makeRandomPersons());
-		}
-	}
-	
 	
 	/**
 	 * LEVLAR UP!
@@ -319,7 +299,7 @@ public class PlayState extends GameState {
 		enemies.add(new BabySurfer(450, SCREEN_HEIGHT*1.5, 100, this));
 		enemies.add(new Rock(SCREEN_WIDTH/2, SCREEN_HEIGHT, 100));
 		enemies.add(new Rock(SCREEN_WIDTH/2, SCREEN_HEIGHT*1.5, 100));
-		powerUps.add(new Coconut(500, SCREEN_HEIGHT, 50));	
+		powerUps.add(new Coconut(500, SCREEN_HEIGHT, 50, this));	
 	}
 	
 	/**
@@ -340,7 +320,7 @@ public class PlayState extends GameState {
 		enemies.add(new Airbaloon(450, SCREEN_HEIGHT*1.5, 100, this));
 		enemies.add(new Airplane(SCREEN_WIDTH/4, SCREEN_HEIGHT, 200));
 		enemies.add(new Airplane(SCREEN_WIDTH/2+150, SCREEN_HEIGHT*1.6, 200));
-		powerUps.add(new Redbull(500, SCREEN_HEIGHT, 50));	
+		powerUps.add(new Redbull(500, SCREEN_HEIGHT, 50, this));	
 	}
 	
 	
@@ -425,6 +405,10 @@ public class PlayState extends GameState {
 
 	public void setRight(boolean right) {
 		this.right = right;
+	}
+
+	public Player getPlayer() {
+		return player;
 	}
 		
 	

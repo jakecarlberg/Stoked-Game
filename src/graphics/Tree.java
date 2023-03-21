@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
 import static constants.Constants.SCREEN_HEIGHT;
 
 public class Tree extends GameObjects {
